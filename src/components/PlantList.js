@@ -19,7 +19,7 @@ function PlantList() {
           image={plant.image}
           name={plant.name}
           price={plant.price}
-          inStock={plant.inStock}
+          
         />
       ))}
     </ul>
