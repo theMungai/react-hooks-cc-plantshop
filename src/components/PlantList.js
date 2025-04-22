@@ -1,26 +1,11 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import PlantCard from "./PlantCard";
 
-function PlantList() {
-  const [plants, setPlants] = useState([])
-
-  useEffect(function(){
-    fetch("http://localhost:5500/plants")
-    .then((response) => response.json())
-    .then((data) => setPlants(data))
-    .catch((error) => console.log("Unable to fetch data", error))
-  }, [])
-
+function PlantList({ plants, onDeletePlant }) {
   return (
     <ul className="cards">
       {plants.map((plant) => (
-        <PlantCard
-          key={plant.id}
-          image={plant.image}
-          name={plant.name}
-          price={plant.price}
-          
-        />
+        <PlantCard key={plant.id} plant={plant} onDeletePlant={onDeletePlant} />
       ))}
     </ul>
   );
